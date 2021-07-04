@@ -14,7 +14,14 @@ module.exports = {
     show: async function(nombre){
         const task = await Task.findOne({name: nombre})
         return task
+    },
+    update: async function(nombre_previo, nombre, descripcion, fecha){
+        //const task = await Task.findOne({name: nombre_previo})
+        const taskUpdated = await Task.updateOne({name: nombre_previo}, 
+            {name: nombre, description: descripcion, date: fecha})
+        return taskUpdated
     }
+
 }
 
 /*
