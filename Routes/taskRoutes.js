@@ -15,4 +15,12 @@ router.get('/task/:name', async (req, res) =>{
     res.send(task)  
 } )
 
+router.post('/task', async (req, res) => {
+    const name = req.body.name
+    const desc = req.body.description
+    const date = req.body.date
+    const saveResponse = await taskMethods.create(name, desc, date)
+    res.json(saveResponse)
+})
+
 module.exports = router
