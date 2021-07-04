@@ -11,18 +11,18 @@ module.exports = {
         const saveResponse = await task.save()
         return saveResponse
     },
-    show: async function(nombre){
-        const task = await Task.findOne({name: nombre})
+    show: async function(id){
+        const task = await Task.findOne({_id: id})
         return task
     },
-    update: async function(nombre_previo, nombre, descripcion, fecha){
+    update: async function(id, nombre, descripcion, fecha){
         //const task = await Task.findOne({name: nombre_previo})
-        const taskUpdated = await Task.updateOne({name: nombre_previo}, 
+        const taskUpdated = await Task.updateOne({_id: id}, 
             {name: nombre, description: descripcion, date: fecha})
         return taskUpdated
     },
-    destroy: async function(nombre){
-        const taskDeleted = await Task.deleteOne({name: nombre})
+    destroy: async function(id){
+        const taskDeleted = await Task.deleteOne({_id: id})
         return taskDeleted
     }
 

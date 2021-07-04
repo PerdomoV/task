@@ -9,9 +9,9 @@ router.get('/task', async (req, res) => {
     res.send(tasks)
 })
 
-router.get('/task/:name', async (req, res) =>{
-    const taskName = req.params.name 
-    const task = await taskMethods.show(taskName)
+router.get('/task/:id', async (req, res) =>{
+    const taskId = req.params.id 
+    const task = await taskMethods.show(taskId)
     res.send(task)  
 } )
 
@@ -23,18 +23,18 @@ router.post('/task', async (req, res) => {
     res.json(saveResponse)
 })
 
-router.put('/task/:name', async (req, res) => {
-    const nombre_previo = req.params.name
+router.put('/task/:id', async (req, res) => {
+    const taskId = req.params.id
     const name = req.body.name
     const desc = req.body.description
     const date = req.body.date
-    const saveResponse = await taskMethods.update(nombre_previo, name, desc, date)
+    const saveResponse = await taskMethods.update(taskId, name, desc, date)
     res.json(saveResponse)
 })
 
-router.delete('/task/:name', async (req, res) => {
-    const nombre = req.params.name
-    const deleteResponse = await taskMethods.destroy(nombre)
+router.delete('/task/:id', async (req, res) => {
+    const taskId = req.params.id
+    const deleteResponse = await taskMethods.destroy(taskId)
     res.json(deleteResponse)
 })
 
