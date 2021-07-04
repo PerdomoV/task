@@ -20,6 +20,10 @@ module.exports = {
         const taskUpdated = await Task.updateOne({name: nombre_previo}, 
             {name: nombre, description: descripcion, date: fecha})
         return taskUpdated
+    },
+    destroy: async function(nombre){
+        const taskDeleted = await Task.deleteOne({name: nombre})
+        return taskDeleted
     }
 
 }

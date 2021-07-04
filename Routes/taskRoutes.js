@@ -32,4 +32,10 @@ router.put('/task/:name', async (req, res) => {
     res.json(saveResponse)
 })
 
+router.delete('/task/:name', async (req, res) => {
+    const nombre = req.params.name
+    const deleteResponse = await taskMethods.destroy(nombre)
+    res.json(deleteResponse)
+})
+
 module.exports = router
