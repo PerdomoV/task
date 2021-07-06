@@ -19,6 +19,7 @@ router.post('/task', async (req, res) => {
     const name = req.body.name
     const desc = req.body.description
     const date = req.body.date
+    // const {name, description, date} = req.body abrevia el bloque anterior :v
     const saveResponse = await taskMethods.create(name, desc, date)
     res.json(saveResponse)
 })
