@@ -15,7 +15,8 @@ const taskSchema = new Schema({
                             },
                             {
                               timestamps: true,
-                              versionKey: false
+                              versionKey: false //no almacena el atributo :_v
+                              // que es innecesario debido a que ya hay timestamps
                             }
                             );
 
