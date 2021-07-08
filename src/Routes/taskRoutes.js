@@ -4,39 +4,15 @@ const taskMethods = require('../Controllers/taskController.js')
 
 const router = Router()
 
-router.get('/task', async (req, res) => { 
-    const tasks = await taskMethods.index()
-    res.send(tasks)
-})
+router.get('/task', taskMethods.index)
 
-router.get('/task/:id', async (req, res) =>{
-    const taskId = req.params.id 
-    const task = await taskMethods.show(taskId)
-    res.send(task)  
-} )
+router.get('/task/:id', taskMethods.show)
 
-router.post('/task', async (req, res) => {
-    const name = req.body.name
-    const desc = req.body.description
-    const date = req.body.date
-    // const {name, description, date} = req.body abrevia el bloque anterior :v
-    const saveResponse = await taskMethods.create(name, desc, date)
-    res.json(saveResponse)
-})
+router.post('/task', taskMethods.create)
 
-router.put('/task/:id', async (req, res) => {
-    const taskId = req.params.id
-    const name = req.body.name
-    const desc = req.body.description
-    const date = req.body.date
-    const saveResponse = await taskMethods.update(taskId, name, desc, date)
-    res.json(saveResponse)
-})
+router.put('/task/:id', taskMethods.update)
 
-router.delete('/task/:id', async (req, res) => {
-    const taskId = req.params.id
-    const deleteResponse = await taskMethods.destroy(taskId)
-    res.json(deleteResponse)
-})
+router.delete('/task/:id', taskMethods.destroy)
+
 
 module.exports = router

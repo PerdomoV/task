@@ -12,10 +12,11 @@ const taskSchema = new Schema({
                                         unique : false, 
                                         required : true,
                                       },
-                                date: {
-                                       type: Date,
-                                       required: true
-                                      }
-                            });
+                            },
+                            {
+                              timestamps: true,
+                              versionKey: false
+                            }
+                            );
 
 module.exports = model( 'Task', taskSchema )

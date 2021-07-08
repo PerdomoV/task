@@ -2,28 +2,32 @@ require('../database/database.js')
 const Task = require('../Models/taskModel.js')
 
 module.exports = {
-    index: async function(){
+    index: async (req, res) => {
         const tasks = await Task.find()
-        return tasks
+        res.json(tasks)
     },
-    create: async function(nombre, descripcion, fecha){
-        const task = new Task({name: nombre, description: descripcion, date: fecha})
+    create: async function(req, res){
+        const {name, description} = req.body
+        const task = new Task({name: name, description: description})
         const saveResponse = await task.save()
-        return saveResponse
+        res.json(saveResponse)
     },
-    show: async function(id){
-        const task = await Task.findOne({_id: id})
-        return task
+    show: async (req, res) => {
+        const _id  = req.params.id
+        const task = await Task.findOne({_id: _id})
+        res.json(task)
     },
-    update: async function(id, nombre, descripcion, fecha){
-        //const task = await Task.findOne({name: nombre_previo})
+    update: async (req, res) => {
+        const id = req.params.id
+        const {_id, name, description} = req.body
         const taskUpdated = await Task.updateOne({_id: id}, 
-            {name: nombre, description: descripcion, date: fecha})
-        return taskUpdated
+            {name: name, description: description})
+        res.json(taskUpdated)
     },
-    destroy: async function(id){
+    destroy: async (req, res) => {
+        const id = req.params.id
         const taskDeleted = await Task.deleteOne({_id: id})
-        return taskDeleted
+        res.json(taskDeleted)
     }
 
 }
