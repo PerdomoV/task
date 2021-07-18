@@ -4,6 +4,7 @@
   "description": "Simple task list (CRUD) with Mongo, Express and Node",
   "main": "./src/index.js",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "express": "^4.17.1",
     "mongoose": "^5.13.1",
     "path": "^0.12.7"

@@ -1,0 +1,15 @@
+### Creando un usuario
+
+POST http://localhost:3000/api/signup
+Content-Type: application/json  
+
+{
+    "username": "carajo",
+    "email": "gio@gmail.com",
+	"password": "halo 3: ODST"
+}
+
+## Obteniendo la lista de usuarios 
+
+
+GET http://localhost:3000/api/users
