@@ -2,7 +2,9 @@ const taskRouter = require('./Routes/taskRoutes.js')
 const authRouter = require('./Routes/authRoutes.js')
 const express = require('express')
 const path = require('path')
-
+//Archivo con las variables de entorno:
+const dotenv = require('dotenv')
+dotenv.config()
 
 const app = express()
 

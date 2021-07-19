@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt')
 
 module.exports =  {
     signUp: async (req, res) => {
-        const {username, email, password, roles} = req.body
+        const { username, email, password, roles } = req.body
         const userFound = await authHelpers.findUser(req, res, username, email)
         if( !userFound ){
             try{
@@ -19,7 +19,7 @@ module.exports =  {
                 if(roles.length > 0){
                     roles.forEach( (element) => {
                         console.log(element)
-                        const role = new Role({name: element})
+                        const role = new Role({ name: element })
                         RoleId.push(role._id)
                         
                     })
@@ -43,9 +43,8 @@ module.exports =  {
 
     signIn: async (req,res) => {
         try{
-            const {email, password} = req.body
-            console.log(email, password)
-            const userFound = await User.findOne({email: email})  
+            const { username, email, password } = req.body
+            const userFound = await User.findOne({ email: email })  
             if(!userFound){
                 res.status(404).send("¡Usuario no encontrado!")
             }
@@ -53,8 +52,11 @@ module.exports =  {
             const logged = bcrypt.compareSync(password, hash); // true or false
 
             if(logged){
-                //Crer aquí el token
-                res.status(200).send( "Loggeado con éxito + el token" )
+                //Crear aquí el token
+                var jwt = require('jsonwebtoken');
+                var accessToken = jwt.sign({ name: username }, process.env.ACCESS_TOKEN_SECRET)
+
+                res.status(200).json({ accessToken: accessToken })
             }
         }catch(e){
             console.error(e)
