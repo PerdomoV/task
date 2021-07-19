@@ -10,8 +10,12 @@ const app = express()
 
 app.set('port', process.env.PORT || 3000)
 app.use(express.json())
-app.use('/api', taskRouter)
+
+
 app.use('/api', authRouter)
+app.use('/api', taskRouter)
+
+
 
 app.use(express.static(path.join(__dirname, 'public')))
 

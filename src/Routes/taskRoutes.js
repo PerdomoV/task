@@ -1,8 +1,10 @@
 const {Router} = require('express')
 const taskMethods = require('../Controllers/taskController.js')
+const authorizationMiddleware = require('../Middlewares/authorization.js')
 
 
 const router = Router()
+router.use(authorizationMiddleware.authenticateToken)
 
 router.get('/task', taskMethods.index)
 

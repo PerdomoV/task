@@ -1,4 +1,5 @@
 const User = require('../Models/userModel.js')
+const jwt = require('jsonwebtoken');
 const Role = require('../Models/rolModel.js')
 const authHelpers = require('../Helpers/authHelpers.js')
 
@@ -53,7 +54,6 @@ module.exports =  {
 
             if(logged){
                 //Crear aquí el token
-                var jwt = require('jsonwebtoken');
                 var accessToken = jwt.sign({ name: username }, process.env.ACCESS_TOKEN_SECRET)
 
                 res.status(200).json({ accessToken: accessToken })
