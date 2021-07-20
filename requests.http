@@ -1,15 +1,40 @@
-### Creando un usuario
+### Creando un usuario fazt
 
 POST http://localhost:3000/api/signup
 Content-Type: application/json  
 
 {
-    "username": "carajo",
-    "email": "gio@gmail.com",
-	"password": "halo 3: ODST"
+    "username": "fazt",
+    "email": "fazt@code.com",
+	"password": "Halo: Reach",
+    "roles": ["Admin", "Regular"]
 }
 
-## Obteniendo la lista de usuarios 
+### log in de fazt: 
+
+POST http://localhost:3000/api/login
+Content-Type: application/json  
+
+{
+	"email": "fazt@code.com",
+	"password": "Halo: Reach"
+}
 
 
-GET http://localhost:3000/api/users
+### Creando una tarea desde fazt:
+
+POST http://localhost:3000/api/task
+Content-Type: application/json  
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiZmF6dCIsIl9pZCI6IjYwZjY0NzgzNjIwNDdkMzNhYzUzOThlOCIsImlhdCI6MTYyNjc1MjkzN30.F557L4KxoHYDiGrTjA32mhwyP-ezshwoHwx-JKDZ4Ac 
+
+{
+	"name": "barrer",
+    "description": "barrer la habitación"
+}
+
+### Obtener tarea por id:
+
+GET http://localhost:3000/api/task/60f647b662047d33ac5398ec
+Content-Type: application/json  
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiZmF6dCIsIl9pZCI6IjYwZjY0NzgzNjIwNDdkMzNhYzUzOThlOCIsImlhdCI6MTYyNjc1MjkzN30.F557L4KxoHYDiGrTjA32mhwyP-ezshwoHwx-JKDZ4Ac 
+

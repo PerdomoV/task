@@ -44,7 +44,7 @@ module.exports =  {
 
     signIn: async (req,res) => {
         try{
-            const { username, email, password } = req.body
+            const { email, password } = req.body
             const userFound = await User.findOne({ email: email })  
             if(!userFound){
                 res.status(404).send("¡Usuario no encontrado!")
@@ -54,8 +54,7 @@ module.exports =  {
 
             if(logged){
                 //Crear aquí el token
-                var accessToken = jwt.sign({ name: username }, process.env.ACCESS_TOKEN_SECRET)
-
+                var accessToken = jwt.sign({ username: userFound.username, _id: userFound._id }, process.env.ACCESS_TOKEN_SECRET)
                 res.status(200).json({ accessToken: accessToken })
             }
         }catch(e){
@@ -63,7 +62,4 @@ module.exports =  {
         }
 
     }
-
-
-
 }
