@@ -18,8 +18,8 @@ function authenticateToken(req, res, next){
 async function checkTaskAuthor(req, res, next){
    
    try{
-        const user = await User.findOne({ _id: req.user._id })
-        if(!user) res.sendStatus(401)
+        const task = await Task.findOne({ user: req.user._id })
+        if(!task) res.sendStatus(401)
         next()
    }catch(e){
        console.error(e)

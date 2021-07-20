@@ -8,7 +8,7 @@ module.exports = {
     },
     create: async function(req, res){
         const {name, description} = req.body
-        const task = new Task({name: name, description: description, user: req.userId})
+        const task = new Task({name: name, description: description, user: req.user._id})
         const saveResponse = await task.save()
         res.json(saveResponse)
     },
