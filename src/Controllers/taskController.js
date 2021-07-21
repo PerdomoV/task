@@ -3,14 +3,23 @@ const Task = require('../Models/taskModel.js')
 
 module.exports = {
     index: async (req, res) => {
-        const tasks = await Task.find()
-        res.json(tasks)
+        try{
+            const tasks = await Task.find()
+            res.json(tasks)
+        }catch(e){
+            console.error(e)
+            //Todo catch debe retornar un status con mensaje o json de error
+        }
     },
     create: async function(req, res){
-        const {name, description} = req.body
-        const task = new Task({name: name, description: description, user: req.user._id})
-        const saveResponse = await task.save()
-        res.json(saveResponse)
+        try{
+            const {name, description} = req.body
+            const task = new Task({name: name, description: description, user: req.user._id})
+            const saveResponse = await task.save()
+            res.json(saveResponse)
+        } catch(e){
+            console.error(e)
+        }
     },
     show: async (req, res) => {
         const _id  = req.params.id
