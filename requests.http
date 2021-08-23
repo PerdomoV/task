@@ -84,3 +84,34 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImZhe
 GET http://localhost:3000/api/task/60f64fec1f70e61854fa7b06
 Content-Type: application/json  
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpvcmdlIiwiX2lkIjoiNjBmNjRkMjgxMjcyNjQxYjc4OWRjYTMyIiwiaWF0IjoxNjI2NzU1NDE5fQ.xB8-1z5eQZH_wqxewOTRmhVmSRZF8knH_IBLEZMdVs0
+
+### nueva
+POST http://localhost:3000/api/signup
+Content-Type: application/json  
+
+{
+    "username": "gago",
+    "email": "gago@code.com",
+	"password": "Halo: Reach",
+    "roles": ["Admin", "Regular"]
+}
+
+### show fazt:
+
+GET http://localhost:3000/api/user
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImZhenQiLCJfaWQiOiI2MTIyZmRiMzI4Y2EyYjNhYTgzODNkOTEiLCJpYXQiOjE2Mjk2ODMxMzJ9.k5ra7_rp05SYaj4bb7VmeXO-XIKqI3nf56Okd0RW65Y
+
+### Edit fazt to jurgen:
+
+PUT http://localhost:3000/api/user 
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImZhenQiLCJfaWQiOiI2MTIyZmRiMzI4Y2EyYjNhYTgzODNkOTEiLCJpYXQiOjE2Mjk2ODMxMzJ9.k5ra7_rp05SYaj4bb7VmeXO-XIKqI3nf56Okd0RW65Y
+
+
+{
+    "username": "jurgen",
+    "email": "backo@code.com",
+	"password": "Halo 3: ODST",
+    "roles": ["Admin", "Regular"]
+}

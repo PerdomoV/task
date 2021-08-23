@@ -1,5 +1,6 @@
 const taskRouter = require('./Routes/taskRoutes.js')
 const authRouter = require('./Routes/authRoutes.js')
+const userRouter = require('./Routes/userRoutes.js')
 const express = require('express')
 const path = require('path')
 //Archivo con las variables de entorno:
@@ -14,6 +15,7 @@ app.use(express.json())
 
 app.use('/api', authRouter)
 app.use('/api', taskRouter)
+app.use('/api', userRouter)
 
 
 
